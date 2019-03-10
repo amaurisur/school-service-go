@@ -19,7 +19,7 @@ type HealthController struct {
 func (h *HealthController) Health() {
 	body := []viewmodels.Health{
 		{
-			Name:      "Events Service",
+			Name:      "School Service",
 			Connected: true,
 		},
 	}

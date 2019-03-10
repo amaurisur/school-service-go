@@ -6,10 +6,9 @@ package routers
 import (
 	"github.com/astaxie/beego"
 	"github.com/school/controllers"
-	"github.com/school/database"
 )
 
-func Init(db database.Database) {
+func init() {
 
 	ns := beego.NewNamespace("/school",
 		beego.NSInclude(
