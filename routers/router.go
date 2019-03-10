@@ -14,6 +14,9 @@ func init() {
 		beego.NSInclude(
 			&controllers.HealthController{Controller: controllers.Controller{}},
 		),
+		beego.NSInclude(
+			&controllers.SchoolController{Controller: controllers.Controller{}},
+		),
 	)
 	beego.AddNamespace(ns)
 }

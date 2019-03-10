@@ -9,7 +9,7 @@ import (
 
 func init() {
 	// Configure ORM DB Driver and Register DB
-	database.RegisterDriverAndDatabase()
+	database.RegisterDriverAndDatabase("mysql")
 }
 
 func main() {
