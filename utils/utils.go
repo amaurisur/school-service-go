@@ -3,6 +3,7 @@ package utils
 import (
 	"os"
 	"regexp"
+	"strconv"
 
 	"github.com/astaxie/beego"
 )
@@ -26,11 +27,33 @@ func GetAppName() string {
 
 // GetAppConfig :Get key configuration variable if exist otherwise return defaultValue
 func GetAppConfig(key, defaultValue string) string {
-	return beego.AppConfig.DefaultString(key, defaultValue)
+	val := beego.AppConfig.DefaultString(key, defaultValue)
+	match := configRex.FindStringSubmatch(val)
+	if len(match) == 2 {
+		return getEnv(match[1], defaultValue)
+	}
+	return val
 }
 
 // GetAppIntConfig :Get key configuration variable as Int if exist otherwise return defaultValue
 // it is parsed from the secret manager if it's needed
 func GetAppIntConfig(key string, defaultValue int) int {
 	return beego.AppConfig.DefaultInt(key, defaultValue)
+}
+
+// getEnv get key environment variable if exist otherwise return defaultValue
+func getEnv(key, defaultValue string) string {
+	value := os.Getenv(key)
+	if len(value) == 0 {
+		return defaultValue
+	}
+	return value
+}
+
+func GetAppBoolConfig(key string, defaultValue bool) bool {
+	if b, err := strconv.ParseBool(GetAppConfig(key, strconv.FormatBool(defaultValue))); err != nil {
+		return defaultValue
+	} else {
+		return b
+	}
 }
