@@ -34,4 +34,13 @@ func init() {
             Filters: nil,
             Params: nil})
 
+    beego.GlobalControllerRouter["github.com/school/controllers:SchoolController"] = append(beego.GlobalControllerRouter["github.com/school/controllers:SchoolController"],
+        beego.ControllerComments{
+            Method: "GetAllStudent",
+            Router: `/student`,
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
 }

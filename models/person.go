@@ -20,9 +20,9 @@ type Person struct {
 	InsertedAt time.Time `orm:"auto_now_add;type(datetime)" json:"inserted_at"`
 	// email and some others fields
 
-	Principal *Principal `orm:"reverse(one)"`
-	Student   *Student   `orm:"reverse(one)"`
-	Employee  *Employee  `orm:"reverse(one)"`
+	Principal *Principal `orm:"reverse(one)" json:"-"`
+	Student   *Student   `orm:"reverse(one)" json:"-"`
+	Employee  *Employee  `orm:"reverse(one)" json:"-"`
 }
 
 func init() {

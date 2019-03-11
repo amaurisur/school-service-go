@@ -26,6 +26,36 @@
   version = "v4.20"
 
 [[projects]]
+  branch = "master"
+  name = "github.com/juju/ansiterm"
+  packages = [".","tabwriter"]
+  revision = "720a0952cc2ac777afc295d9861263e2a4cf96a1"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/juju/loggo"
+  packages = [".","loggocolor"]
+  revision = "d976af380377adda50b2d34279f1dec3507504ac"
+
+[[projects]]
+  name = "github.com/lunixbochs/vtclean"
+  packages = ["."]
+  revision = "88cfb0c2efe8ed7b0ccf0af83db39359829027bb"
+  version = "v1.0.0"
+
+[[projects]]
+  name = "github.com/mattn/go-colorable"
+  packages = ["."]
+  revision = "3a70a971f94a22f2fa562ffcc7a0eb45f5daf045"
+  version = "v0.1.1"
+
+[[projects]]
+  name = "github.com/mattn/go-isatty"
+  packages = ["."]
+  revision = "369ecd8cea9851e459abb67eb171853e3986591e"
+  version = "v0.0.6"
+
+[[projects]]
   name = "github.com/smartystreets/assertions"
   packages = [".","internal/go-render/render","internal/oglematchers"]
   revision = "7678a5452ebea5b7090a6b163f844c133f523da2"
@@ -38,10 +68,22 @@
   version = "1.6.3"
 
 [[projects]]
+  name = "github.com/spiritclips/email-service-go"
+  packages = ["utils"]
+  revision = "44e62d1f5e92716c8006949e540a94c82a90969a"
+  version = "1.2.0-SP32"
+
+[[projects]]
   branch = "master"
   name = "golang.org/x/crypto"
   packages = ["acme","acme/autocert"]
   revision = "c2843e01d9a2bc60bb26ad24e09734fdc2d9ec58"
+
+[[projects]]
+  branch = "master"
+  name = "golang.org/x/sys"
+  packages = ["unix"]
+  revision = "10058d7d4faa7dd5ef860cbd31af00903076e7b8"
 
 [[projects]]
   name = "google.golang.org/appengine"
@@ -58,6 +100,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "8d2e435a2648626f392de6bc1056476f66c623d3c9bc168576f50fc2a40a9220"
+  inputs-digest = "d9e85fcde8beb0317bf16afa426eb6d372f74c1372a6c0fe6abe926e765b0ea7"
   solver-name = "gps-cdcl"
   solver-version = 1

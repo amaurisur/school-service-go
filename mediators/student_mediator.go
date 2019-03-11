@@ -62,3 +62,20 @@ func (sm *StudentMediator) CreateStudent(s viewmodels.Student) *MediatorError {
 	sm.logger.Infof("end create student")
 	return nil
 }
+
+func (sm *StudentMediator) GetAllStudentByLastName() ([]models.Student, error) {
+	sm.logger.Infof("starting get all student")
+
+	// TODO: clean this
+	// [ORM]2019/03/10 23:16:07  -[Queries/default] -
+	// [  OK /    db.Query /     0.5ms] - [SELECT T0.`id`, T0.`person_id`, T0.`tutor_id`, T1.`id`, T1.`dni`,
+	// T1.`first_name`, T1.`last_name`, T1.`birthdate`, T1.`inserted_at` FROM `student` T0
+	// INNER JOIN `person` T1 ON T1.`id` = T0.`person_id`
+	// ORDER BY T1.`last_name` ASC LIMIT 1000]
+	var students []models.Student
+	qs := sm.Db.GetQueryTable("student")
+	_, err := qs.RelatedSel("Person").OrderBy("Person__LastName").All(&students)
+
+	sm.logger.Infof("end get all student")
+	return students, err
+}

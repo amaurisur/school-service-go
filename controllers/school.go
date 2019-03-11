@@ -80,3 +80,21 @@ func (sc *SchoolController) PostPerson() {
 
 	sc.ServeResponse(sc.ComposeResponse(http.StatusOK, map[string]string{"message": "person registred"}))
 }
+
+// GetAllStudent get all student
+// @Title Get all School's students.
+// @Description Get all student group by last name.
+// @Success 200 {object} viewmodels.Message
+// @Failure 400 Bad Request
+// @router /student [get]
+func (sc *SchoolController) GetAllStudent() {
+
+	m := mediators.NewStudentMediator(database.NewDbWrapper())
+	s, err := m.GetAllStudentByLastName()
+	if err != nil {
+		sc.ServeResponse(sc.ComposeResponseError(http.StatusInternalServerError, http.StatusText(http.StatusInternalServerError), err.Error()))
+		return
+	}
+
+	sc.ServeResponse(sc.ComposeResponse(http.StatusOK, s))
+}
